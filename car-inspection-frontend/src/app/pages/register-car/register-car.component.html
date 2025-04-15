@@ -1,0 +1,141 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm border-0">
+        <div class="card-header bg-secondary text-white py-3">
+          <h3 class="card-title mb-0 text-center">
+            <i class="bi bi-car-front me-2"></i>Regjistrimi i Veturës
+          </h3>
+        </div>
+        <div class="card-body p-4">
+          <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+            <!-- Lloji i Veturës -->
+            <div class="mb-4">
+              <label for="lloji" class="form-label fw-bold"
+                >Lloji i Veturës</label
+              >
+              <select
+                class="form-select"
+                id="lloji"
+                formControlName="lloji"
+                [class.is-invalid]="
+                  carForm.get('lloji')?.invalid && carForm.get('lloji')?.touched
+                "
+              >
+                <option value="" disabled selected>Zgjidhni llojin...</option>
+                <option value="Sedan">Sedan</option>
+                <option value="SUV">SUV</option>
+                <option value="Hatchback">Hatchback</option>
+                <option value="Pickup">Pickup</option>
+                <option value="Minivan">Minivan</option>
+              </select>
+              <div class="invalid-feedback">
+                Ju lutem zgjidhni një lloj të veturës.
+              </div>
+            </div>
+
+            <!-- Ngjyra -->
+            <div class="mb-4">
+              <label for="ngjyra" class="form-label fw-bold">Ngjyra</label>
+
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <!-- Color Picker -->
+                <input
+                  type="color"
+                  class="form-control form-control-color"
+                  id="ngjyra"
+                  formControlName="ngjyra"
+                  title="Zgjidhni ngjyrën"
+                />
+
+                <!-- Ose shkruaje manualisht -->
+                <!-- <div class="flex-grow-1">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="ngjyraText"
+                    formControlName="ngjyra"
+                    placeholder="Shkruaj ngjyrën (p.sh. 'E kuqe' ose '#FF0000')"
+                    [class.is-invalid]="
+                      carForm.get('ngjyra')?.invalid &&
+                      carForm.get('ngjyra')?.touched
+                    "
+                  />
+                </div> -->
+              </div>
+
+              <div class="invalid-feedback">
+                Ju lutem specifikoni një ngjyrë valide.
+              </div>
+            </div>
+            <!-- <div class="mb-4">
+              <label for="ngjyra" class="form-label fw-bold">Ngjyra</label>
+              <input
+                type="color"
+                class="form-control form-control-color"
+                id="ngjyra"
+                formControlName="ngjyra"
+                title="Zgjidhni ngjyrën"
+              />
+              <div class="mt-2">
+                <input
+                  type="text"
+                  class="form-control mt-2"
+                  [class.is-invalid]="
+                    carForm.get('ngjyra')?.invalid &&
+                    carForm.get('ngjyra')?.touched
+                  "
+                  placeholder="Ose shkruani ngjyrën (p.sh. E kuqe)"
+                />
+              </div>
+              <div class="invalid-feedback">
+                Ju lutem specifikoni një ngjyrë.
+              </div>
+            </div> -->
+
+            <!-- Numri i Targave -->
+            <div class="mb-4">
+              <label for="nr_targave" class="form-label fw-bold"
+                >Numri i Targave</label
+              >
+              <div class="input-group">
+                <span class="input-group-text bg-light">RKS</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nr_targave"
+                  formControlName="nr_targave"
+                  placeholder="AB123CD"
+                  [class.is-invalid]="
+                    carForm.get('nr_targave')?.invalid &&
+                    carForm.get('nr_targave')?.touched
+                  "
+                />
+              </div>
+              <div class="invalid-feedback">
+                Ju lutem shkruani një numër targash valid (p.sh. AB123CD).
+              </div>
+              <small class="text-muted"
+                >Formati: 2 shkronja, 3 numra, 2 shkronja</small
+              >
+            </div>
+
+            <!-- Fushë e fshehtë -->
+            <input class="form-control" formControlName="clientId" hidden />
+
+            <!-- Butoni i Regjistrimit -->
+            <div class="d-grid mt-4">
+              <button
+                class="btn btn-warning btn-lg"
+                type="submit"
+                [disabled]="carForm.invalid"
+              >
+                <i class="bi bi-save me-2"></i>Regjistro Veturën
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

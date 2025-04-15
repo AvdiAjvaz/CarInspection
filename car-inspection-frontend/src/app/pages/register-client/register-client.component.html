@@ -1,0 +1,78 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow">
+        <div class="card-header bg-secondary text-white">
+          <h3 class="card-title mb-0">Regjistrimi i Klientit</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="emri" class="form-label">Emri</label>
+              <input
+                type="text"
+                class="form-control"
+                id="emri"
+                formControlName="emri"
+                [class.is-invalid]="
+                  clientForm.get('emri')?.invalid &&
+                  clientForm.get('emri')?.touched
+                "
+                placeholder="Shkruani emrin"
+              />
+              <div class="invalid-feedback">
+                Ju lutem shkruani një emër valid.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="mbiemri" class="form-label">Mbiemri</label>
+              <input
+                type="text"
+                class="form-control"
+                id="mbiemri"
+                formControlName="mbiemri"
+                [class.is-invalid]="
+                  clientForm.get('mbiemri')?.invalid &&
+                  clientForm.get('mbiemri')?.touched
+                "
+                placeholder="Shkruani mbiemrin"
+              />
+              <div class="invalid-feedback">
+                Ju lutem shkruani një mbiemër valid.
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="telefoni" class="form-label">Numri i Telefonit</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="telefoni"
+                formControlName="numri_i_telefonit"
+                [class.is-invalid]="
+                  clientForm.get('numri_i_telefonit')?.invalid &&
+                  clientForm.get('numri_i_telefonit')?.touched
+                "
+                placeholder="Shkruani numrin e telefonit"
+              />
+              <div class="invalid-feedback">
+                Ju lutem shkruani një numër telefoni valid.
+              </div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button
+                class="btn btn-secondary btn-lg"
+                [disabled]="clientForm.invalid"
+                type="submit"
+              >
+                <i class="bi bi-person-plus me-2"></i> Regjistro Klientin
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

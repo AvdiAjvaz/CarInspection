@@ -1,0 +1,79 @@
+<div class="container-fluid p-0">
+  <!-- Header me titull dhe navigacion -->
+  <header class="bg-dark text-white p-4 shadow">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1 class="h3 mb-0">{{ title }}</h1>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  routerLink="/register"
+                  routerLinkActive="active"
+                >
+                  <i class="bi bi-person-plus me-1"></i> Regjistro Klientin
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/register-car"
+                  routerLinkActive="active"
+                >
+                  <i class="bi bi-car-front me-1"></i> Regjistro Veturën
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/damage-registration"
+                  routerLinkActive="active"
+                >
+                  <i class="bi bi-pencil-square me-1"></i> Regjistro Dëmtimet
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/car-inspection"
+                  routerLinkActive="active"
+                >
+                  <i class="bi bi-car-front me-1"></i> Inspekto Veturën
+                </a>
+              </li>
+              <!--
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/damage-inspection" routerLinkActive="active">
+                  <i class="bi bi-search me-1"></i> Inspekto Dëmtimet
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/car-inspection" routerLinkActive="active">
+                  <i class="bi bi-car-front me-1"></i> Inspekto Veturën
+                </a>
+              </li>
+              -->
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Përmbajtja kryesore -->
+  <main class="container mt-4">
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,0 +1,64 @@
+<div class="container mt-4">
+  <h4 class="mb-3 text-center">Shënoni dëmtimet në imazh</h4>
+
+  <div class="row justify-content-center">
+    <div class="col-12 d-flex justify-content-between mb-3">
+      <div class="canvas-wrapper">
+        <img
+          src="images/front.jpeg"
+          alt="Front view"
+          #frontImage
+          class="image"
+        />
+        <canvas
+          #frontCanvas
+          class="canvas"
+          (click)="onCanvasClick($event, 'front')"
+        ></canvas>
+      </div>
+
+      <div class="canvas-wrapper">
+        <img src="images/top.jpeg" alt="Top view" #topImage class="image" />
+        <canvas
+          #topCanvas
+          class="canvas"
+          (click)="onCanvasClick($event, 'top')"
+        ></canvas>
+      </div>
+
+      <div class="canvas-wrapper">
+        <img src="images/back.jpeg" alt="Back view" #backImage class="image" />
+        <canvas
+          #backCanvas
+          class="canvas"
+          (click)="onCanvasClick($event, 'back')"
+        ></canvas>
+      </div>
+    </div>
+
+    <div class="col-12 d-flex justify-content-center">
+      <div class="canvas-wrapper">
+        <img src="images/left.jpeg" alt="Left view" #leftImage class="image" />
+        <canvas
+          #leftCanvas
+          class="canvas"
+          (click)="onCanvasClick($event, 'left')"
+        ></canvas>
+      </div>
+
+      <div class="canvas-wrapper">
+        <img
+          src="images/right.jpeg"
+          alt="Right view"
+          #rightImage
+          class="image"
+        />
+        <canvas
+          #rightCanvas
+          class="canvas"
+          (click)="onCanvasClick($event, 'right')"
+        ></canvas>
+      </div>
+    </div>
+  </div>
+</div>

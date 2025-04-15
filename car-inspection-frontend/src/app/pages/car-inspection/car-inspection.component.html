@@ -1,0 +1,99 @@
+<div class="container mt-4">
+  <h2>Lista e Veturave</h2>
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Lloji</th>
+        <th>Ngjyra</th>
+        <th>Numri i Targave</th>
+        <!-- <th>Klienti</th> -->
+        <th>Veprime</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cars">
+        <td>{{ car.id }}</td>
+        <td>{{ car.lloji }}</td>
+        <td>{{ car.ngjyra }}</td>
+        <td>{{ car.nr_targave }}</td>
+        <!-- <td>{{ clientId }}</td> -->
+
+        <td>
+          <button class="btn btn-primary" (click)="showDamages(car.id)">
+            Shfaq dëmtimet
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedCarId">
+    <h4>Dëmtimet për veturën me ID: {{ selectedCarId }}</h4>
+    <div *ngIf="isLoading">Duke u ngarkuar...</div>
+    <div *ngIf="!isLoading && selectedDamages.length === 0">
+      Nuk ka dëmtime.
+    </div>
+
+    <table *ngIf="selectedDamages.length > 0" class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Pamja</th>
+          <th>Përshkrimi</th>
+          <th>Shkalla</th>
+          <th>Koordinatat</th>
+          <th>Statusi</th>
+
+          <th>Shiko</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let damage of selectedDamages">
+          <td>{{ damage.view }}</td>
+          <td>{{ damage.pershkrimi }}</td>
+          <td>{{ damage.shkalla_e_demtimit }}</td>
+          <td>{{ damage.x.toFixed(2) }}, {{ damage.y.toFixed(2) }}</td>
+          <td>{{ damage.statusDescription }}</td>
+          <!-- <td>
+            <button
+              class="btn btn-success"
+              (click)="updateDamageStatus(damage.id)"
+            >
+              {{ damage.status ? "Përfunduar" : "Në pritje" }}
+            </button>
+          </td> -->
+
+          <td>
+            <button class="btn btn-secondary" (click)="viewDamageImage(damage)">
+              Shiko
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div *ngIf="selectedDamageImage" class="container mt-4">
+  <h4 class="mb-3 text-center">
+    Shiko dëmtimin në pamjen: {{ selectedDamageImage.view }}
+  </h4>
+
+  <div class="row justify-content-center">
+    <div class="col-12 d-flex justify-content-center">
+      <div class="position-relative" style="max-width: 500px; width: 100%">
+        <img
+          [src]="'images/' + selectedDamageImage.view + '.jpeg'"
+          alt="Pamja e veturës"
+          class="img-fluid w-100"
+          #damageImage
+          (load)="onImageLoaded()"
+        />
+        <canvas
+          #damageCanvas
+          class="position-absolute top-0 start-0 w-100 h-100"
+          style="pointer-events: none"
+        ></canvas>
+      </div>
+    </div>
+  </div>
+</div>
